@@ -1,7 +1,7 @@
 import {Module} from '@nestjs/common';
 import {ServersModule} from './servers/servers.module';
 import {ApplicationsModule} from './applications/applications.module';
-import { MongooseModule } from '@nestjs/mongoose';
+import {MongooseModule} from '@nestjs/mongoose';
 
 @Module({
     imports: [
