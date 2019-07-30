@@ -10,7 +10,8 @@ export class ServersService {
 
     async create(createServerDto: CreateServerDto): Promise<Server> {
         const createdServer = new this.serverModel(createServerDto);
-        return await createdServer.save();
+        const saved = await createdServer.save();
+        return saved._id;
     }
 
     async findAll(): Promise<Server[]> {

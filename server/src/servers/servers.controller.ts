@@ -21,7 +21,7 @@ export class ServersController {
     @Post()
     async create(@Body() createServerDto: CreateServerDto) {
         try {
-            await this.serversService.create(createServerDto);
+            return await this.serversService.create(createServerDto);
         } catch (e) {
             return e;
         }

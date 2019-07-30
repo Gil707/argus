@@ -33,12 +33,11 @@ class Server extends React.Component {
             const res = await API.post('/servers', server);
 
             if (res.status === 201) {
-                console.log(this.state.serversData);
-                let servers = this.state.serversData;
-                servers.push(server);
+                server._id = res.data._id;
                 this.setState({
-                    serversData: servers
+                    serversData: [...this.state.serversData, server]
                 });
+                this.clearForm();
             }
         } else {
             console.log('Empty form')
