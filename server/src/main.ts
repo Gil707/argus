@@ -12,6 +12,7 @@ async function bootstrap() {
       AppModule,
       new FastifyAdapter()
   );
+  app.enableCors();
   await app.listen(3003);
 }
 

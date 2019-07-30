@@ -16,4 +16,8 @@ export class ServersService {
     async findAll(): Promise<Server[]> {
         return await this.serverModel.find().exec();
     }
+
+    async remove(id): Promise<Server> {
+        return await this.serverModel.findOneAndDelete(id);
+    }
 }

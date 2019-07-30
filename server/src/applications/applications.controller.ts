@@ -9,8 +9,8 @@ export class ApplicationsController {
     }
 
     @Get(':id')
-    findOne(@Param() params): string {
-        return `This action returns a #${params.id} application`;
+    findOne(@Param() params) {
+        return {status: `This action returns a #${params.id} application`};
     }
 
     @Get()

@@ -9,8 +9,8 @@ export class ServersController {
     }
 
     @Get(':id')
-    findOne(@Param() params): string {
-        return `This action returns a #${params.id} server`;
+    findOne(@Param('id') id: string) {
+        return {status: `This action updates a #${id} server`};
     }
 
     @Get()
@@ -20,7 +20,11 @@ export class ServersController {
 
     @Post()
     async create(@Body() createServerDto: CreateServerDto) {
-        this.serversService.create(createServerDto);
+        try {
+            await this.serversService.create(createServerDto);
+        } catch (e) {
+            return e;
+        }
     }
 
     @Put(':id')
@@ -29,7 +33,7 @@ export class ServersController {
     }
 
     @Delete(':id')
-    remove(@Param('id') id: string) {
-        return `This action removes a #${id} server`;
+    async remove(@Param('id') id: string) {
+        return this.serversService.remove(id);
     }
 }
