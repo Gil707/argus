@@ -2,23 +2,23 @@ import React from 'react';
 import {Tile, Box, Title, Subtitle, Button} from 'bloomer'
 import API from "../../utils/API";
 
-class ServerCard extends React.Component {
+class ApplicationTile extends React.Component {
 
     constructor(props) {
         super(props);
-        this.removeServer = this.removeServer.bind(this);
+        this.removeApp = this.removeApp.bind(this);
     }
 
-    removeServerFromList(){
-        this.props.removeServer(this.props.data._id);
+    removeAppFromList(){
+        this.props.removeApp(this.props.data._id);
     }
 
-    async removeServer() {
+    async removeApp() {
         try {
-            const res = await API.delete('/servers/' + this.props.data._id);
+            const res = await API.delete('/applications/' + this.props.data._id);
 
             if (res.status === 200) {
-                this.removeServerFromList()
+                this.removeAppFromList()
             }
         } catch (e) {
             console.log(e);
@@ -33,7 +33,7 @@ class ServerCard extends React.Component {
                         <Box style={{minWidth: '300px', maxWidth: '300px'}}>
                             <Title>{this.props.data.name}</Title>
                             <Subtitle>{this.props.data.ip}</Subtitle>
-                            <Button isColor={'danger'} isSize={'small'} onClick={this.removeServer}>Delete</Button>
+                            <Button isColor={'danger'} isSize={'small'} onClick={this.removeApp}>Delete</Button>
                         </Box>
                     )
                 }/>
@@ -42,4 +42,4 @@ class ServerCard extends React.Component {
     }
 }
 
-export default ServerCard;
+export default ApplicationTile;

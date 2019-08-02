@@ -3,6 +3,10 @@ import {CreateServerDto, UpdateServerDto, ListAllEntities} from './dto';
 import {ServersService} from './servers.service';
 import {Server} from './interfaces/server.interface';
 
+/* tslint:disable */
+const ping = require('ping');
+/* tslint:enable */
+
 @Controller('servers')
 export class ServersController {
     constructor(private readonly serversService: ServersService) {
@@ -16,6 +20,11 @@ export class ServersController {
     @Get()
     async findAll(@Query() query: ListAllEntities): Promise<Server[]> {
         return this.serversService.findAll();
+    }
+
+    @Get('/check/:ip')
+    async check(@Param() params) {
+        return await ping.promise.probe(params.ip);
     }
 
     @Post()

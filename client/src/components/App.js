@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from "./navbar/Navbar";
-import { Section, Container } from 'bloomer';
+import { Section } from 'bloomer';
 import Main from './Main';
 
 class App extends React.Component {
@@ -10,9 +10,7 @@ class App extends React.Component {
             <div>
                 <Navbar/>
                 <Section className="App">
-                    <Container>
                         <Main />
-                    </Container>
                 </Section>
             </div>
         )
