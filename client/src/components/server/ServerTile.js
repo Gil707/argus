@@ -36,16 +36,24 @@ class ServerTile extends React.Component {
     }
 
     render() {
+
+        const { available } = this.state;
+
+        const {
+            name,
+            ip
+        } = this.props.data;
+
         return (
             <Tile isParent>
                 <Tile isChild render={
                     () => (
                         <Box style={{minWidth: '300px', maxWidth: '300px'}}>
-                            <Tag isColor={this.state.available ? 'success' : 'light'} className={'is-pulled-right'}>
-                                {this.state.available ? 'Available' : 'Disconnected'}
+                            <Tag isColor={available ? 'success' : 'light'} className={'is-pulled-right'}>
+                                {available ? 'Available' : 'Disconnected'}
                             </Tag>
-                            <Title>{this.props.data.name}</Title>
-                            <Subtitle>{this.props.data.ip}</Subtitle>
+                            <Title>{name}</Title>
+                            <Subtitle>{ip}</Subtitle>
                             <Button isColor={'danger'} isSize={'small'} onClick={this.removeServer}>Delete</Button>
                         </Box>
                     )

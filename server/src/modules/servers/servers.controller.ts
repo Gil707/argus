@@ -9,8 +9,8 @@ const ping = require('ping');
 
 @Controller('servers')
 export class ServersController {
-    constructor(private readonly serversService: ServersService) {
-    }
+    constructor(
+        private readonly serversService: ServersService) {}
 
     @Get(':id')
     findOne(@Param('id') id: string) {

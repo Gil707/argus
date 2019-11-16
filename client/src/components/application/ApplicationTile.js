@@ -1,5 +1,11 @@
 import React from 'react';
-import {Tile, Box, Title, Subtitle, Button} from 'bloomer'
+import {
+    Tile,
+    Box,
+    Title,
+    Subtitle,
+    Button
+} from 'bloomer'
 import API from "../../utils/API";
 
 class ApplicationTile extends React.Component {
@@ -26,14 +32,23 @@ class ApplicationTile extends React.Component {
     }
 
     render() {
+        const {
+            name,
+            ip
+        } = this.props.data;
+
         return (
             <Tile isParent>
                 <Tile isChild render={
                     () => (
                         <Box style={{minWidth: '300px', maxWidth: '300px'}}>
-                            <Title>{this.props.data.name}</Title>
-                            <Subtitle>{this.props.data.ip}</Subtitle>
-                            <Button isColor={'danger'} isSize={'small'} onClick={this.removeApp}>Delete</Button>
+                            <Title>{name}</Title>
+                            <Subtitle>{ip}</Subtitle>
+                            <Button
+                                isColor='danger'
+                                isSize='small'
+                                onClick={this.removeApp}
+                            >Delete</Button>
                         </Box>
                     )
                 }/>
